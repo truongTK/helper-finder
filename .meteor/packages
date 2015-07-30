@@ -20,7 +20,7 @@ npm-container
 babel-compiler
 babel-runtime
 jsx
+mdg:camera
 react-meteor-data
 react-template-helper
 poetic:react-material-ui
-xolvio:cucumber
