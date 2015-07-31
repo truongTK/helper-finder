@@ -1,3 +1,10 @@
 body{
   margin: 0px;
 }
+td {
+    height: 50px;
+    vertical-align: center;
+}
+.text {
+  padding-left: 20px;
+}
