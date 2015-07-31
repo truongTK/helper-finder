@@ -31,6 +31,6 @@ App = React.createClass({
     if(Meteor.userId()){
       return (<ChooseLanguage/>);
     }
-    return (<Login/>);
+    return (<TaskerInfo/>);
   }
 });
