@@ -6,11 +6,14 @@ const {
   FlatButton,
   IconMenu,
   FontIcon,
-  TextField
+  TextField,
+  Tabs,
+  Tab
 } = mui;
 
 const ThemeManager = new mui.Styles.ThemeManager();
 Meteor.subscribe("userinfo");
+Meteor.subscribe("jobs");
 App = React.createClass({
   // This mixin makes the getMeteorData method work
   childContextTypes: {
@@ -31,6 +34,6 @@ App = React.createClass({
     if(Meteor.userId()){
       return (<ChooseLanguage/>);
     }
-    return (<TaskerInfo/>);
+    return (<HomeTasker/>);
   }
 });
