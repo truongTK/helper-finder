@@ -36,22 +36,22 @@ HomeTasker = React.createClass({
   clickJob(){
     //Custom Actions
     let customActions = [
-      <FlatButton
+    <FlatButton
       label="Cancel"
       secondary={true}
       onTouchTap={this._handleCustomDialogCancel} />,
-      <FlatButton
+    <FlatButton
       label="Submit"
       primary={true}
       onTouchTap={this._handleCustomDialogSubmit} />
     ];
     return(
       <Dialog
-      ref="customDialog"
-      title="Dialog With Custom Actions"
-      actions={customActions}
-      modal={false}>
-      The actions in this window were passed in as an array of react objects.
+        ref="customDialog"
+        title="Dialog With Custom Actions"
+        actions={customActions}
+        modal={false}>
+        The actions in this window were passed in as an array of react objects.
       </Dialog>
     );
   },
@@ -61,19 +61,19 @@ HomeTasker = React.createClass({
     return(
 
       <Card>
-      <CardHeader
+        <CardHeader
 
-      title="Cleaning"
-      subtitle="01/08/2015 10AM - 01/08/2015 10PM"
-      avatar={<Avatar>CL</Avatar>}
-      showExpandableButton={true} onTouchTap={this._handleCustomDialogTouchTap}>
+          title="Cleaning"
+          subtitle="01/08/2015 10AM - 01/08/2015 10PM"
+          avatar={<Avatar>CL</Avatar>}
+          showExpandableButton={true} onTouchTap={this._handleCustomDialogTouchTap}>
 
-      </CardHeader>
-      <CardHeader
-      title="Moving"
-      subtitle="02/08/2015 10AM - 02/08/2015 10PM"
-      avatar={<Avatar>MV</Avatar>}
-      showExpandableButton={true}/>
+        </CardHeader>
+        <CardHeader
+          title="Moving"
+          subtitle="02/08/2015 10AM - 02/08/2015 10PM"
+          avatar={<Avatar>MV</Avatar>}
+          showExpandableButton={true}/>
       </Card>
     );
   },
@@ -82,24 +82,24 @@ HomeTasker = React.createClass({
   render() {
     return (
       <div className="container">
-      <AppBar
-      title="Tasker Home"
-      zDepth={0}
-      />
-      <Tabs zDepth={1}>
-      <Tab label="Pick more jobs" >
-      <div>
-      {this.unpickJobRender()}
-      </div>
-      </Tab>
-      <Tab label="Your pending jobs" >
-      <div>
-      <Paper zDepth={0}>
-      <p>You don't have any job</p>
-      </Paper>
-      </div>
-      </Tab>
-      </Tabs>
+        <AppBar
+          title="Tasker Home"
+          zDepth={0}
+          />
+        <Tabs zDepth={1}>
+          <Tab label="Pick more jobs" >
+            <div>
+              {this.unpickJobRender()}
+            </div>
+          </Tab>
+          <Tab label="Your pending jobs" >
+            <div>
+              <Paper zDepth={0}>
+                <p>You don't have any job</p>
+              </Paper>
+            </div>
+          </Tab>
+        </Tabs>
 
       </div>
     );
