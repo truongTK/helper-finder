@@ -16,7 +16,7 @@ LandingPage = React.createClass({
 
   onGetStart(){
     //Cookie.set('landingpage', 1);
-    React.render(<App />, document.getElementById("render-target"));
+    React.render(<HomePage />, document.getElementById("render-target"));
   },
 
   render() {
