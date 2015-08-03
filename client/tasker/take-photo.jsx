@@ -74,29 +74,33 @@ TakePhoto = React.createClass({
             ("Please create your avatar")
           }
         </CardText>
-        {this.state.takePhoto ?
-          (<CardMedia overlay={<CardTitle title="Your Avatar" />}>
-            <img className="photo" src="images/no_avatar.jpg"/>
-          </CardMedia>) :
-          (<CardMedia overlay={<CardTitle title="Your Avatar" />}>
-            <img className="photo"/>
-          </CardMedia>)
-        }
-        <CardActions expandable={true}>
+        <div className="button-secondary">
+          {this.state.takePhoto ?
+            (<CardMedia overlay={<CardTitle title="Your Avatar" />}>
+              <img className="photo" src="images/no_avatar.jpg"/>
+            </CardMedia>) :
+            (<CardMedia overlay={<CardTitle title="Your Avatar" />}>
+              <img className="photo"/>
+            </CardMedia>)
+          }
+        </div>
+        <div className="button-secondary">
           <RaisedButton
             id="takeAPhoto"
             label="Take a photo"
             secondary={true}
             fullWidth={true}
             onClick={this.takeAPicture}/>
+        </div>
+        <div className="button-secondary">
           <RaisedButton
             id="nextToChooseSkill"
             label="Next"
             secondary={true}
             fullWidth={true}
-            disabled={this.state.takePhoto}
+            // disabled={this.state.takePhoto}
             onClick={this.clickToAddInfo}/>
-        </CardActions>
+        </div>
       </div>
     );
   }

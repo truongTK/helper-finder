@@ -1,8 +1,8 @@
 /**
- * @Description: Tasker choose skill
- * @Author: truongtk
- */
- 
+* @Description: Tasker choose skill
+* @Author: truongtk
+*/
+
 const {
   AppBar,
   RaisedButton,
@@ -14,7 +14,9 @@ const {
   TextField,
   Avatar,
   List,
-  ListItem
+  ListItem,
+  CardText,
+  Checkbox
 } = mui;
 
 const ThemeManager = new mui.Styles.ThemeManager();
@@ -30,23 +32,31 @@ ChooseSkill = React.createClass({
     };
   },
 
-  chooseService(text){
-    console.log(text);
+  onCheck(text) {
+    console.log("text");
+  },
+
+  onClick() {
+    console.log("asdsasd");
   },
 
   renderService() {
-    let services = [{avatar:"images/avatar.jpg" , text: "Home Massage"},
-    {avatar:"images/avatar.jpg" , text: "House Cleaning"}];
+    let services = [{avatar:"HM" , text: "Home Massage"},
+    {avatar:"HC" , text: "House Cleaning"},
+    {avatar:"HS" , text: "Help Shopping"},
+    {avatar:"HC" , text: "Help Cooking"},
+    {avatar:"DT" , text: "Document Translate"}];
     return services.map((service) => {
-      return (
-        <ListItem
-          leftAvatar={<Avatar src={service.avatar} />}
-          primaryText={service.text} onMouseEnter={this.chooseService(service.text)}/>
-      );
+      return <ListItem
+        rightToggle={ <Checkbox onCheck={this.onCheck}/>}
+        leftAvatar={<Avatar> {service.avatar} </Avatar>}
+        primaryText={service.text} />;
     });
   },
 
   clickFinishStep() {
+    HomeTasker
+    React.render(<HomeTasker />, document.getElementById("render-target"));
   },
 
   render() {
@@ -57,6 +67,9 @@ ChooseSkill = React.createClass({
           zDepth={0}
           iconElementRight={<FlatButton label="<< Back" />}
           />
+        <CardText>
+          Choose your services you can provide
+        </CardText>
         <div className="service">
           <List>
             {this.renderService()}
