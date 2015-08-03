@@ -51,7 +51,7 @@ ChooseSkill = React.createClass({
   },
 
   clickFinishStep() {
-    HomeTasker
+    Meteor.call("createHelper",this.props);
     React.render(<HomeTasker />, document.getElementById("render-target"));
   },
 

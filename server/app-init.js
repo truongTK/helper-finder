@@ -16,7 +16,6 @@ UserInfo.upsert({_id:123, name:"Phạm Phúc Toàn", phone:"01228833055", email:
 
 
 Jobs.upsert(
-
   {
     userInfoId: 123,
     serviceId:1,
@@ -62,7 +61,6 @@ Jobs.upsert(
   }
 );
 Jobs.upsert(
-
   {
     userInfoId: 123,
     serviceId:3,
