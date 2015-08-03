@@ -1,3 +1,8 @@
+/**
+* @Description: Tasker create avatar
+* @Author: truongtk
+*/
+
 const {
   AppBar,
   RaisedButton,
@@ -11,7 +16,8 @@ const {
   Card,
   CardText,
   CardMedia,
-  CardTitle
+  CardTitle,
+  CardActions
 } = mui;
 
 const ThemeManager = new mui.Styles.ThemeManager();
@@ -40,7 +46,6 @@ TakePhoto = React.createClass({
     };
     MeteorCamera.getPicture(cameraOptions, function (error, data) {
       if (!error) {
-        console.log(data);
         $('.photo').attr('src', data);
       }
     });
@@ -49,23 +54,49 @@ TakePhoto = React.createClass({
     });
   },
 
+  clickToAddInfo() {
+    data = $('.photo').attr('src');
+    //console.log(data);
+    avatarId = Meteor.call('createAvatar',data);
+    React.render(<TaskerInfo />, document.getElementById("render-target"));
+  },
+
   render() {
     return (
-      <div className="body">
-        <Paper>
-          <CardText>
-            Create a portrait
-          </CardText>
+      <div id ="container" className="container">
+        <AppBar
+          title="Your Avatar"
+          zDepth={0}
+          iconElementRight={<FlatButton label="<< Back" />} />
+        <CardText>
+          {this.state.takePhoto ?
+            ("Please create your avatar") :
+            ("Please create your avatar")
+          }
+        </CardText>
+        {this.state.takePhoto ?
+          (<CardMedia overlay={<CardTitle title="Your Avatar" />}>
+            <img className="photo" src="images/no_avatar.jpg"/>
+          </CardMedia>) :
+          (<CardMedia overlay={<CardTitle title="Your Avatar" />}>
+            <img className="photo"/>
+          </CardMedia>)
+        }
+        <CardActions expandable={true}>
           <RaisedButton
+            id="takeAPhoto"
             label="Take a photo"
             secondary={true}
+            fullWidth={true}
             onClick={this.takeAPicture}/>
-          {this.state.takePhoto ? "": (
-            <CardMedia overlay={<CardTitle title="Portrait"/>}>
-              <img className="photo"/>
-            </CardMedia>)
-          }
-        </Paper>
+          <RaisedButton
+            id="nextToChooseSkill"
+            label="Next"
+            secondary={true}
+            fullWidth={true}
+            disabled={this.state.takePhoto}
+            onClick={this.clickToAddInfo}/>
+        </CardActions>
       </div>
     );
   }

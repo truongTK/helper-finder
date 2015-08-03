@@ -10,3 +10,7 @@ Meteor.publish("service", function() {
   return Service.find({
   });
 });
+Meteor.publish("avatar", function() {
+  return Avatar.find({
+  });
+});
