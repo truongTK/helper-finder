@@ -9,5 +9,5 @@ Meteor.subscribe("users");
 Meteor.startup(function () {
   // Use Meteor.startup to render the component after the page is ready
   injectTapEventPlugin();
-  React.render(<App />, document.getElementById("render-target"));
+  React.render(<LandingPage />, document.getElementById("render-target"));
 });
