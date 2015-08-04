@@ -1,6 +1,7 @@
 const{
   AppBar,
-  RaisedButton
+  RaisedButton,
+  CardMedia
 } = mui;
 const ThemeManager = new mui.Styles.ThemeManager();
 
@@ -15,6 +16,10 @@ HomePage = React.createClass({
     };
   },
 
+  onCustomerClick(){
+    React.render(<Customer />, document.getElementById("render-target"));
+  },
+
   render() {
     return (
       <div>
@@ -27,13 +32,19 @@ HomePage = React.createClass({
           <RaisedButton
             label="Bạn cần giúp gì ?"
             primary={true}
-            fullWidth={true} />
+            fullWidth={true}
+            onClick={this.onCustomerClick} />
         </div>
         <div className="button-secondary">
           <RaisedButton
             label="Bạn đã sẵn sàng nhận việc ?"
             secondary={true}
             fullWidth={true} />
+        </div>
+        <div className="button-secondary">
+          <CardMedia>
+            <img src="icons/img/home-page.png"/>
+          </CardMedia>
         </div>
       </div>
     );

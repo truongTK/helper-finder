@@ -5,5 +5,5 @@ Meteor.subscribe("avatar");
 Meteor.startup(function () {
   // Use Meteor.startup to render the component after the page is ready
   injectTapEventPlugin();
-  React.render(<TakePhoto />, document.getElementById("render-target"));
+  React.render(<LandingPage />, document.getElementById("render-target"));
 });
