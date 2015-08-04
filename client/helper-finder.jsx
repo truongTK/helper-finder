@@ -4,6 +4,7 @@ Meteor.subscribe("avatar");
 Meteor.subscribe("helper");
 Meteor.subscribe("userinfo");
 Meteor.subscribe("jobs");
+Meteor.subscribe("service");
 
 Meteor.startup(function () {
   // Use Meteor.startup to render the component after the page is ready
