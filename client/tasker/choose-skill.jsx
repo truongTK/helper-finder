@@ -33,11 +33,7 @@ ChooseSkill = React.createClass({
   },
 
   onCheck(text) {
-    console.log("text");
-  },
-
-  onClick() {
-    console.log("asdsasd");
+    console.log(text);
   },
 
   renderService() {
@@ -48,14 +44,14 @@ ChooseSkill = React.createClass({
     {avatar:"DT" , text: "Document Translate"}];
     return services.map((service) => {
       return <ListItem
-        rightToggle={ <Checkbox onCheck={this.onCheck}/>}
+        rightToggle={ <Checkbox onCheck={this.onCheck.bind(this,service.text)}/>}
         leftAvatar={<Avatar> {service.avatar} </Avatar>}
         primaryText={service.text} />;
     });
   },
 
   clickFinishStep() {
-    HomeTasker
+    Meteor.call("createHelper",this.props);
     React.render(<HomeTasker />, document.getElementById("render-target"));
   },
 

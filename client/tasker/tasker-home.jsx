@@ -56,10 +56,7 @@ HomeTasker = React.createClass({
     );
   },
   unpickJobRender(){
-
-
     return(
-
       <Card>
         <CardHeader
 

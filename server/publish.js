@@ -14,3 +14,7 @@ Meteor.publish("avatar", function() {
   return Avatar.find({
   });
 });
+Meteor.publish("helper", function() {
+  return Helper.find({
+  });
+});

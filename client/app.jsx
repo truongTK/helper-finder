@@ -12,8 +12,6 @@ const {
 } = mui;
 
 const ThemeManager = new mui.Styles.ThemeManager();
-Meteor.subscribe("userinfo");
-Meteor.subscribe("jobs");
 App = React.createClass({
   // This mixin makes the getMeteorData method work
   childContextTypes: {
