@@ -1,9 +1,38 @@
+/**
+* @Description: Home Page
+* @Author: linhnh
+*/
+
 const{
   AppBar,
+  LeftNav,
+  MenuItem,
   RaisedButton,
   CardMedia
 } = mui;
 const ThemeManager = new mui.Styles.ThemeManager();
+
+menuItems = [
+  { route: 'get-started', text: 'Get Started' },
+  { route: 'customization', text: 'Customization' },
+  { route: 'components', text: 'Components' },
+  { type: MenuItem.Types.SUBHEADER, text: 'Resources' },
+  {
+     type: MenuItem.Types.LINK,
+     payload: 'https://github.com/callemall/material-ui',
+     text: 'GitHub'
+  },
+  {
+     text: 'Disabled',
+     disabled: true
+  },
+  {
+     type: MenuItem.Types.LINK,
+     payload: 'https://www.google.com',
+     text: 'Disabled Link',
+     disabled: true
+  },
+];
 
 HomePage = React.createClass({
   childContextTypes: {
@@ -16,6 +45,10 @@ HomePage = React.createClass({
     };
   },
 
+  onOpenLeftNav(){
+    this.refs.leftNav.toggle();
+  },
+
   onCustomerClick(){
     React.render(<Customer />, document.getElementById("render-target"));
   },
@@ -26,7 +59,8 @@ HomePage = React.createClass({
         <AppBar
           title=""
           iconClassNameRight="muidocs-icon-navigation-expand-more"
-          showMenuIconButton={false} />
+          onLeftIconButtonTouchTap={this.onOpenLeftNav} />
+        <LeftNav ref="leftNav" docked={false} menuItems={menuItems} />
         <br/>
         <div className="button-secondary">
           <RaisedButton
