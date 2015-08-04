@@ -1,3 +1,8 @@
+/**
+* @Description: Home Page
+* @Author: linhnh
+*/
+
 const{
   RaisedButton
 } = mui;
