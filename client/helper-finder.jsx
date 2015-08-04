@@ -8,5 +8,5 @@ Meteor.subscribe("jobs");
 Meteor.startup(function () {
   // Use Meteor.startup to render the component after the page is ready
   injectTapEventPlugin();
-  React.render(<LandingPage />, document.getElementById("render-target"));
+  React.render(<HomePage />, document.getElementById("render-target"));
 });
