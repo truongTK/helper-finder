@@ -47,10 +47,22 @@ Asker = React.createClass({
   childContextTypes: {
     muiTheme: React.PropTypes.object
   },
-
   getChildContext () {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
+    };
+  },
+
+  mixins: [ReactMeteorData],
+  getMeteorData() {
+    return {
+      services: Service.find().fetch()
+    }
+  },
+
+  getInitialState: function () {
+    return {
+      selectedServiceId: []
     };
   },
 
@@ -62,18 +74,11 @@ Asker = React.createClass({
     React.render(<HomePage />, document.getElementById("render-target"));
   },
 
-  onSelectItem(e){
-    console.log(e);
-  },
-
-  renderService() {
-    return Service.find().fetch().map((service) => {
-      return <ListItem
-        leftAvatar={<Avatar src={service.icon}/>}
-        primaryText={service.text}
-        key={service.text}
-        onTouchTap={this.onSelectItem} />;
+  selectService(serviceId) {
+    this.setState({
+      selectedServiceId: [serviceId]
     });
+    console.log(this.state.selectedServiceId);
   },
 
   render() {
@@ -86,9 +91,10 @@ Asker = React.createClass({
           iconElementRight={<IconButton iconClassName="icon-back" onClick={this.onClickBack} />} />
           <LeftNav ref="leftNav" docked={false} menuItems={menuItems} />
           <div className="service">
-            <List>
-              {this.renderService()}
-            </List>
+            <ListService
+              services={this.data.services}
+              selectedServiceId={this.state.selectedServiceId}
+              onServiceSelected={this.selectService} />
           </div>
       </div>
     );
