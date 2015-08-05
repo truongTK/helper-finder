@@ -1,6 +1,6 @@
 /**
-* @Description: Asker Page
-* @Author: linhnh
+* @Description: Home Page
+* @Author: linhnh,truongtk
 */
 
 const{
@@ -42,7 +42,7 @@ menuItems = [
   },
 ];
 
-Asker = React.createClass({
+Customer = React.createClass({
   childContextTypes: {
     muiTheme: React.PropTypes.object
   },
@@ -57,6 +57,14 @@ Asker = React.createClass({
     this.refs.leftNav.toggle();
   },
 
+  renderService() {
+    return Service.find().fetch().map((service) => {
+      return <ListItem
+        leftAvatar={<Avatar src={service.icon}/>}
+        primaryText={service.text} />;
+    });
+  },
+
   render() {
     return (
       <div>
@@ -65,40 +73,11 @@ Asker = React.createClass({
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           onLeftIconButtonTouchTap={this.onOpenLeftNav} />
           <LeftNav ref="leftNav" docked={false} menuItems={menuItems} />
-          <List>
-            
-
-            <ListItem
-              leftAvatar={<Avatar src="icons/img/home-massage.png" />}
-              primaryText="Massage tại nhà" />
-            <ListItem
-              leftAvatar={<Avatar src="icons/img/house-cleanning.png" />}
-              primaryText="Dọn dẹp nhà" />
-            <ListItem
-              leftAvatar={<Avatar src="icons/img/shopping-help.png" />}
-              primaryText="Đi chợ giúp" />
-            <ListItem
-              leftAvatar={<Avatar src="icons/img/cook-help.png" />}
-              primaryText="Nấu ăn giúp" />
-            <ListItem
-              leftAvatar={<Avatar src="icons/img/baby-care.png" />}
-              primaryText="Chăm sóc bé yêu" />
-            <ListItem
-              leftAvatar={<Avatar src="icons/img/elderly-care.png" />}
-              primaryText="Chăm sóc người già" />
-            <ListItem
-              leftAvatar={<Avatar src="icons/img/medical.png" />}
-              primaryText="Thầy thuốc tại nhà" />
-            <ListItem
-              leftAvatar={<Avatar src="icons/img/reparing.png" />}
-              primaryText="Sửa đồ gia dụng tại nhà" />
-            <ListItem
-              leftAvatar={<Avatar src="icons/img/text-translate.png" />}
-              primaryText="Dịch thuật văn bản" />
-            <ListItem
-              leftAvatar={<Avatar src="icons/img/teaching.png" />}
-              primaryText="Dạy học tại nhà" />
-          </List>
+            <div className="service">
+              <List>
+                {this.renderService()}
+              </List>
+            </div>
       </div>
     );
   }

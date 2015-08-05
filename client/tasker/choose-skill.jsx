@@ -37,22 +37,25 @@ ChooseSkill = React.createClass({
   },
 
   renderService() {
-    let services = [{avatar:"HM" , text: "Home Massage"},
-    {avatar:"HC" , text: "House Cleaning"},
-    {avatar:"HS" , text: "Help Shopping"},
-    {avatar:"HC" , text: "Help Cooking"},
-    {avatar:"DT" , text: "Document Translate"}];
-    return services.map((service) => {
+    return Service.find().fetch().map((service) => {
       return <ListItem
         rightToggle={ <Checkbox onCheck={this.onCheck.bind(this,service.text)}/>}
-        leftAvatar={<Avatar> {service.avatar} </Avatar>}
+        leftAvatar={<Avatar src={service.icon}/>}
         primaryText={service.text} />;
     });
   },
 
   clickFinishStep() {
-    Meteor.call("createHelper",this.props);
+    Meteor.call("createHelperAccount",this.props);
     React.render(<HomeTasker />, document.getElementById("render-target"));
+  },
+
+  onClickBack() {
+    React.render(<TaskerInfo
+      taskerName={this.props.taskerName}
+      taskerPhone={this.props.taskerPhone}
+      taskerEmail={this.props.taskerEmail} />
+    , document.getElementById("render-target"));
   },
 
   render() {
@@ -61,10 +64,10 @@ ChooseSkill = React.createClass({
         <AppBar
           title="Choose them."
           zDepth={0}
-          iconElementRight={<FlatButton label="<< Back" />}
+          iconElementRight={<FlatButton label="<< Back" onClick={this.onClickBack}/>}
           />
         <CardText>
-          Choose your services you can provide
+          Choose services you can provide
         </CardText>
         <div className="service">
           <List>

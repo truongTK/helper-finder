@@ -86,7 +86,6 @@ HomeTasker = React.createClass({
         <Tabs zDepth={1}>
           <Tab label="Pick more jobs" >
             <div>
-              {this.unpickJobRender()}
             </div>
           </Tab>
           <Tab label="Your pending jobs" >
