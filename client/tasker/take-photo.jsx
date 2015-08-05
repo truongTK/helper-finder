@@ -77,7 +77,7 @@ TakePhoto = React.createClass({
         <AppBar
           title="Your Avatar"
           zDepth={0}
-          iconElementRight={<FlatButton label="<< Back" onClick={this.onClickBack}/>} />
+          iconElementRight={<IconButton iconClassName="icon-back" onClick={this.onClickBack} />} />
         <CardText>
           {this.state.takePhoto ?
             ("Please create your avatar") :

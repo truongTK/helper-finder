@@ -10,7 +10,7 @@ const{
   List,
   ListItem,
   Avatar,
-  FlatButton
+  IconButton
 } = mui;
 
 var customPalette = {
@@ -80,9 +80,10 @@ Asker = React.createClass({
     return (
       <div>
         <AppBar
+          className="appbar"
           title="Tôi cần giúp..."
           onLeftIconButtonTouchTap={this.onOpenLeftNav}
-          iconElementRight={<FlatButton label="<< Back" onClick={this.onClickBack}/>} />
+          iconElementRight={<IconButton iconClassName="icon-back" onClick={this.onClickBack} />} />
           <LeftNav ref="leftNav" docked={false} menuItems={menuItems} />
           <div className="service">
             <List>

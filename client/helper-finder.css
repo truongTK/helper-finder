@@ -62,10 +62,38 @@ body {
     padding: 1% 5% 1% 5%;
 }
 
+.headerLeftNav{
+  background-color: #ff6666;
+}
+
+.icon-help{
+  background-image: url('icons/img/help.png');
+  width: 33px;
+  height: 32px;
+  background-repeat: no-repeat;
+}
+
+.icon-call{
+  background-image: url('icons/img/call.png');
+  width: 33px;
+  height: 32px;
+  background-repeat: no-repeat;
+}
+
+.icon-back{
+  background-image: url('icons/img/back.png');
+  width: 33px;
+  height: 32px;
+  background-repeat: no-repeat;
+}
+
 /*----------------------------------- End Langding Page --------------------------------*/
 
 /*----------------------------------- Home Page ----------------------------------------*/
 
-
+.appbar{
+  position: fixed;
+  top: 0;
+}
 
 /*----------------------------------- End Home Page ----------------------------------------*/

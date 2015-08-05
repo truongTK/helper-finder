@@ -8,7 +8,9 @@ const{
   LeftNav,
   MenuItem,
   RaisedButton,
-  CardMedia
+  CardMedia,
+  CardHeader,
+  IconButton
 } = mui;
 
 var customPalette = {
@@ -20,25 +22,11 @@ const ThemeManager = new mui.Styles.ThemeManager();
 ThemeManager.setPalette(customPalette);
 
 menuItems = [
-  { route: 'get-started', text: 'Get Started' },
-  { route: 'customization', text: 'Customization' },
-  { route: 'components', text: 'Components' },
-  { type: MenuItem.Types.SUBHEADER, text: 'Resources' },
-  {
-     type: MenuItem.Types.LINK,
-     payload: 'https://github.com/callemall/material-ui',
-     text: 'GitHub'
-  },
-  {
-     text: 'Disabled',
-     disabled: true
-  },
-  {
-     type: MenuItem.Types.LINK,
-     payload: 'https://www.google.com',
-     text: 'Disabled Link',
-     disabled: true
-  },
+  { route: 'get-started', text: 'Gửi yêu cầu' },
+  { route: 'customization', text: 'Danh sách yêu cầu' },
+  { type: MenuItem.Types.SUBHEADER, text: 'Thiết lập' },
+  { route: 'customization', text: 'Trợ giúp và góp ý' },
+  { route: 'customization', text: 'Giới thiệu' },
 ];
 
 HomePage = React.createClass({
@@ -65,13 +53,29 @@ HomePage = React.createClass({
   },
 
   render() {
+    let header = (
+      <div className="headerLeftNav">
+        <CardHeader
+          title="Đăng nhập"
+          avatar="images/no_avatar.jpg"/>
+      </div>
+    );
     return (
       <div>
         <AppBar
           title=""
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-          onLeftIconButtonTouchTap={this.onOpenLeftNav} />
-        <LeftNav ref="leftNav" docked={false} menuItems={menuItems} />
+          onLeftIconButtonTouchTap={this.onOpenLeftNav}
+          iconElementRight={
+            <div>
+              <IconButton iconClassName="icon-call" />
+              <IconButton iconClassName="icon-help" />
+            </div>
+          } />
+        <LeftNav
+          ref="leftNav"
+          docked={false}
+          menuItems={menuItems}
+          header={header} />
         <br/>
         <div className="button-secondary">
           <RaisedButton
