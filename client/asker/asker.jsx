@@ -1,5 +1,5 @@
 /**
-* @Description: Home Page
+* @Description: Asker Page
 * @Author: linhnh,truongtk
 */
 
@@ -9,7 +9,8 @@ const{
   MenuItem,
   List,
   ListItem,
-  Avatar
+  Avatar,
+  FlatButton
 } = mui;
 
 var customPalette = {
@@ -57,11 +58,21 @@ Asker = React.createClass({
     this.refs.leftNav.toggle();
   },
 
+  onClickBack() {
+    React.render(<HomePage />, document.getElementById("render-target"));
+  },
+
+  onSelectItem(e){
+    console.log(e);
+  },
+
   renderService() {
     return Service.find().fetch().map((service) => {
       return <ListItem
         leftAvatar={<Avatar src={service.icon}/>}
-        primaryText={service.text} />;
+        primaryText={service.text}
+        key={service.text}
+        onTouchTap={this.onSelectItem} />;
     });
   },
 
@@ -70,14 +81,14 @@ Asker = React.createClass({
       <div>
         <AppBar
           title="Tôi cần giúp..."
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-          onLeftIconButtonTouchTap={this.onOpenLeftNav} />
+          onLeftIconButtonTouchTap={this.onOpenLeftNav}
+          iconElementRight={<FlatButton label="<< Back" onClick={this.onClickBack}/>} />
           <LeftNav ref="leftNav" docked={false} menuItems={menuItems} />
-            <div className="service">
-              <List>
-                {this.renderService()}
-              </List>
-            </div>
+          <div className="service">
+            <List>
+              {this.renderService()}
+            </List>
+          </div>
       </div>
     );
   }
