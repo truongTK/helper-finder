@@ -1,3 +1,8 @@
+/**
+ * Discription: List of service
+ * Author: truongtk
+ */
+
 const {
   List,
   ListItem,
@@ -7,28 +12,28 @@ const {
 
 ListService = React.createClass({
   propTypes: {
+    selectedServiceId: React.PropTypes.string,
     services: React.PropTypes.array.isRequired,
-    selectedService: React.PropTypes.string,
     onServiceSelected: React.PropTypes.func
   },
-  selectService(serviceId) {
-    console.log("asdasd");
-    this.props.onServiceSelected(serviceId);
+
+  selectService(ServiceId) {
+    this.props.onServiceSelected(ServiceId);
   },
+
   render() {
     return <List>{
       this.props.services.map((service) => {
         let style = {};
-        if (this.props.selectedService === service.text) {
-          style["backgroundColor"] = "#eee";
+        if (this.props.selectedServiceId === service.text) {
+          style["color"] = "#ff6666";
         }
 
         return [
-          <ListItem
-            key={service._id}
+          <ListItem key={ service._id }
             primaryText={ service.text }
-            onClick={ this.selectService.bind(this, service._id) }
-            leftAvatar={ <Avatar src={ "/" + service.avatar + ".png" }/> }
+            onClick={ this.selectService.bind(this, service.text) }
+            leftAvatar={ <Avatar src={service.icon}/> }
             style={style}/>,
           <ListDivider/>
         ]
