@@ -18,7 +18,6 @@ babel-compiler
 babel-runtime
 jsx
 mdg:camera
-xolvio:cucumber
 
 react-meteor-data
 react-template-helper

@@ -1,6 +1,6 @@
 /**
 * @Description: Home Page
-* @Author: linhnh
+* @Author: linhnh,truongtk
 */
 
 const{
@@ -50,6 +50,14 @@ Customer = React.createClass({
     this.refs.leftNav.toggle();
   },
 
+  renderService() {
+    return Service.find().fetch().map((service) => {
+      return <ListItem
+        leftAvatar={<Avatar src={service.icon}/>}
+        primaryText={service.text} />;
+    });
+  },
+
   render() {
     return (
       <div>
@@ -58,11 +66,11 @@ Customer = React.createClass({
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           onLeftIconButtonTouchTap={this.onOpenLeftNav} />
           <LeftNav ref="leftNav" docked={false} menuItems={menuItems} />
-          <List>
-            <ListItem
-              leftAvatar={<Avatar src="images/uxceo-128.jpg" />}
-              primaryText="Massage tại nhà" />
-          </List>
+            <div className="service">
+              <List>
+                {this.renderService()}
+              </List>
+            </div>
       </div>
     );
   }
