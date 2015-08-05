@@ -83,14 +83,9 @@ HomePage = React.createClass({
         <div className="button-secondary">
           <RaisedButton
             label="Bạn đã sẵn sàng nhận việc ?"
-<<<<<<< HEAD
             primary={true}
-            fullWidth={true} />
-=======
-            secondary={true}
             fullWidth={true}
             onClick={this.becomeAHelper}/>
->>>>>>> 68dd77ade6c02df9ea953f60c109e7e1fec8522f
         </div>
         <div className="button-secondary">
           <CardMedia>

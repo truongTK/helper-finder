@@ -42,7 +42,7 @@ menuItems = [
   },
 ];
 
-Customer = React.createClass({
+Asker = React.createClass({
   childContextTypes: {
     muiTheme: React.PropTypes.object
   },
