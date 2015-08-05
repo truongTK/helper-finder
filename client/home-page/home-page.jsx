@@ -10,7 +10,14 @@ const{
   RaisedButton,
   CardMedia
 } = mui;
+
+var customPalette = {
+  primary1Color: "#ff6666",
+  accent1Color: "#c0c0c0"
+};
+
 const ThemeManager = new mui.Styles.ThemeManager();
+ThemeManager.setPalette(customPalette);
 
 menuItems = [
   { route: 'get-started', text: 'Get Started' },
@@ -50,7 +57,7 @@ HomePage = React.createClass({
   },
 
   onCustomerClick(){
-    React.render(<Customer />, document.getElementById("render-target"));
+    React.render(<Asker />, document.getElementById("render-target"));
   },
 
   render() {
@@ -65,14 +72,14 @@ HomePage = React.createClass({
         <div className="button-secondary">
           <RaisedButton
             label="Bạn cần giúp gì ?"
-            primary={true}
+            secondary={true}
             fullWidth={true}
             onClick={this.onCustomerClick} />
         </div>
         <div className="button-secondary">
           <RaisedButton
             label="Bạn đã sẵn sàng nhận việc ?"
-            secondary={true}
+            primary={true}
             fullWidth={true} />
         </div>
         <div className="button-secondary">

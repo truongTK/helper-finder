@@ -5,8 +5,14 @@ Meteor.subscribe("helper");
 Meteor.subscribe("userinfo");
 Meteor.subscribe("jobs");
 
-Meteor.startup(function () {
+Meteor.startup(function () {  
   // Use Meteor.startup to render the component after the page is ready
   injectTapEventPlugin();
-  React.render(<LandingPage />, document.getElementById("render-target"));
+  var isLangdingPage = Cookie.get('langdingpage', function(s) { return parseInt(s); } );
+  if(isLangdingPage != 1){
+    React.render(<LandingPage />, document.getElementById("render-target"));
+  }
+  else{
+    React.render(<HomePage />, document.getElementById("render-target"));
+  }
 });
