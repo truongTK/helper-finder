@@ -62,7 +62,7 @@ Asker = React.createClass({
 
   getInitialState: function () {
     return {
-      selectedServiceId: null
+      selectedServiceId: []
     };
   },
 
@@ -75,10 +75,10 @@ Asker = React.createClass({
   },
 
   selectService(serviceId) {
-    console.log(serviceId);
     this.setState({
-      selectedServiceId: serviceId
+      selectedServiceId: [serviceId]
     });
+    console.log(this.state.selectedServiceId);
   },
 
   render() {

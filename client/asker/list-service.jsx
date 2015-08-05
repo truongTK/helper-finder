@@ -25,7 +25,7 @@ ListService = React.createClass({
     return <List>{
       this.props.services.map((service) => {
         let style = {};
-        if (this.props.selectedServiceId === service.text) {
+        if (this.props.selectedServiceId.indexOf(service.text) != -1) {
           style["color"] = "#ff6666";
         }
 
